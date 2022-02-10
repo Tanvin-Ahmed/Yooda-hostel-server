@@ -5,6 +5,7 @@ const {
 	getStudent,
 	updateStudentsStatus,
 	updateStudentInfo,
+	findOneStudent,
 } = require("./student.service");
 
 module.exports.CreateStudent = async (req, res) => {
@@ -25,6 +26,16 @@ module.exports.GetStudents = async (req, res) => {
 		return res.status(200).json(students);
 	} catch (error) {
 		return res.status(500).json({ message: error.message, error: true });
+	}
+};
+
+module.exports.FindOneStudent = async (req, res) => {
+	try {
+		const roll = req.params.roll;
+		const studentInfo = await findOneStudent(roll);
+		return res.status(200).json(studentInfo);
+	} catch (error) {
+		return res.status(404).json({ message: error.message, error: true });
 	}
 };
 

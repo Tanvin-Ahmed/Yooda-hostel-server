@@ -11,6 +11,10 @@ module.exports.getFoodItems = async (limit, page) => {
 		.skip((page - 1) * limit);
 };
 
+module.exports.getAllFood = async () => {
+	return await foodPost.find({});
+};
+
 module.exports.updateItem = async (info, _id) => {
 	return await foodPost.findByIdAndUpdate(_id, info, { new: true });
 };

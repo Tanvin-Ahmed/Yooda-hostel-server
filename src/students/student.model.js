@@ -4,27 +4,27 @@ const { app } = require("../config/config");
 const postStudent = new mongoose.Schema(
 	{
 		fullName: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		age: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		class: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		roll: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		hall: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		status: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 	},

@@ -11,7 +11,28 @@ module.exports.CreateOrUpdateDistribution = async (req, res) => {
 		const previousDistribution = await getDistribution(info.studentId);
 
 		if (previousDistribution) {
-			const updatedDistribution = await updateDistribution(id, info);
+			const id = mongoose.Types.ObjectId(previousDistribution._id);
+			previousDistribution?.status?.forEach(status => {
+				status[info.date[0]].forEach(stu => {
+					if (stu === info.status[0][info.date[0]][0]) {
+						return res
+							.status(200)
+							.json({ message: "Already Served!", error: false });
+					} else {
+						info.status[0][info.date[0]] = [
+							stu,
+							...info.status[0][info.date[0]],
+						];
+					}
+				});
+			});
+
+			info.foodItemList = {
+				...previousDistribution?.foodItemList,
+				...info.foodItemList,
+			};
+
+			let updatedDistribution = await updateDistribution(id, info);
 			return res.status(201).json(updatedDistribution);
 		} else {
 			const createdDistribution = await createDistribution(info);

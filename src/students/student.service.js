@@ -11,6 +11,10 @@ module.exports.getStudent = async (page, limit) => {
 		.skip((page - 1) * limit);
 };
 
+module.exports.findOneStudent = async roll => {
+	return await postStudent.findOne({ roll });
+};
+
 module.exports.updateStudentsStatus = async (updateStatus, ids) => {
 	await postStudent.updateMany({ _id: ids }, { status: updateStatus });
 	return await postStudent.find({ _id: ids });

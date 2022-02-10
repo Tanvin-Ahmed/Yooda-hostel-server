@@ -4,23 +4,23 @@ const { app } = require("../config/config");
 const distributionPost = new mongoose.Schema(
 	{
 		studentId: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		date: {
-			type: "String",
+			type: Array,
 			required: true,
 		},
 		shift: {
-			type: "String",
-			required: true,
+			type: Array,
+			default: ["breakfast", "lunch", "dinner"],
 		},
 		status: {
-			type: "Array",
+			type: Array,
 			required: true,
 		},
 		foodItemList: {
-			type: "Array",
+			type: Object,
 			required: true,
 		},
 	},

@@ -4,6 +4,7 @@ const {
 	getFoodItems,
 	updateItem,
 	deleteItem,
+	getAllFood,
 } = require("./foods.service");
 
 module.exports.CreateFoodItem = async (req, res) => {
@@ -24,6 +25,15 @@ module.exports.GetFoodItems = async (req, res) => {
 		return res.status(201).json(createdItem);
 	} catch (error) {
 		return res.status(500).json({ message: error.message, error: true });
+	}
+};
+
+module.exports.GetAllFood = async (req, res) => {
+	try {
+		const allFood = await getAllFood();
+		return res.status(200).json(allFood);
+	} catch (error) {
+		return res.status(404).json({ message: error.message, error: true });
 	}
 };
 

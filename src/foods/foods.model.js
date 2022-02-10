@@ -4,11 +4,11 @@ const { app } = require("../config/config");
 const foodPost = new mongoose.Schema(
 	{
 		name: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 		price: {
-			type: "String",
+			type: String,
 			required: true,
 		},
 	},
